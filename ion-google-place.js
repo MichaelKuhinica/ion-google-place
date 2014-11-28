@@ -147,6 +147,17 @@ angular.module('ion-google-place', [])
                      scope.searchQuery = '';
                      $ionicBackdrop.release();
                      el.element.css('display', 'none');
+                     //Fuck you angular
+                     var i_el = $(element[0]);
+                     add_dirty(i_el);
+                     add_dirty(i_el.parent());
+                  };
+
+                  var add_dirty = function(i_el) {
+                     if(!i_el.hasClass('ng-dirty')) {
+                       i_el.addClass('ng-dirty');
+                     }
+                     i_el.removeClass('ng-pristine');
                   };
 
                   element.bind('click', onClick);
